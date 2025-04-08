@@ -1,0 +1,32 @@
+---
+config:
+  theme: base
+---
+%% Diagrama de Componentes con un solo MongoDB para Usuarios, Citas y Historia Clínica
+graph TD
+  A[Usuario] -->|Interacción con UI| B[Frontend - React]
+  B -->|HTTP GET /api/usuarios| C[Backend - Node.js]
+  B -->|HTTP POST /api/usuarios| C[Backend - Node.js]
+  B -->|HTTP GET /api/citas| C[Backend - Node.js]
+  B -->|HTTP POST /api/citas| C[Backend - Node.js]
+  B -->|HTTP GET /api/historia| C[Backend - Node.js]
+  B -->|HTTP POST /api/historia| C[Backend - Node.js]
+  
+  C -->|Consulta GET /usuarios| D[MongoDB]
+  C -->|Inserción POST /usuarios| D[MongoDB]
+  C -->|Consulta GET /citas| D[MongoDB]
+  C -->|Inserción POST /citas| D[MongoDB]
+  C -->|Consulta GET /historia| D[MongoDB]
+  C -->|Inserción POST /historia| D[MongoDB]
+  
+  D -.->|Colección Usuarios| E[(MongoDB)]
+  D -.->|Colección Citas| F[(MongoDB)]
+  D -.->|Colección Historia Clínica| G[(MongoDB)]
+  
+  C -.->|Rutas de API: GET, POST| H[API Rutas]
+  H -->|Controladores: GET, POST - Usuarios| I[Controlador de Usuarios]
+  H -->|Controladores: GET, POST - Citas| J[Controlador de Citas]
+  H -->|Controladores: GET, POST - Historia Clínica| K[Controlador de Historia Clínica]
+  I -->|Lógica de negocio y operaciones DB - Usuarios| D
+  J -->|Lógica de negocio y operaciones DB - Citas| D
+  K -->|Lógica de negocio y operaciones DB - Historia Clínica| D

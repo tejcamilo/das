@@ -1,0 +1,24 @@
+%% Diagrama de Arquitectura de la aplicación web con emojis
+graph TD
+  A[👤 Usuario] -->|🖱️ Interacción con UI| B[💻 Frontend - React]
+  B -->|🌐 Petición HTTP GET/POST| C[🖧 Servidor - Node.js Express]
+  C -->|🔗 Acceso a Base de Datos| D[💾 Base de Datos - MongoDB]
+  
+  subgraph "Cliente"
+    A
+    B
+  end
+  
+  subgraph "Servidor"
+    C
+  end
+  
+  subgraph "Base de Datos"
+    D
+  end
+
+  C -.->|🛠️ Lógica de negocio y controladores de API| E[🔑 API Endpoints]
+  E -->|⚙️ Controladores: Usuarios, Citas, Historia Clínica| F[🔨 Controladores Node.js]
+  
+  F -->|🔄 Operaciones CRUD| D
+  B -.->|🎨 Renderización de Datos| A

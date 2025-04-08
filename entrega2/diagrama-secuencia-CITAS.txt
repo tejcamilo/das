@@ -1,0 +1,43 @@
+---
+config:
+  theme: base
+---
+%% Diagrama de Arquitectura de la aplicación web con emojis
+sequenceDiagram
+    participant Usuario
+    participant Web
+    participant Servidor
+    participant BD as Base de Datos
+
+    %% Agendamiento de cita
+    Usuario->>Web: Ingresa datos de cita
+    Web->>Servidor: POST /crear-cita
+    Servidor->>BD: INSERT cita(fecha, tipo, modalidad)
+    BD-->>Servidor: Confirmación
+    Servidor-->>Web: Cita agendada
+    Web-->>Usuario: Mostrar confirmación
+
+    %% Cancelación de cita
+    Usuario->>Web: Selecciona "Cancelar cita"
+    Web->>Servidor: DELETE /cancelar-cita/:id
+    Servidor->>BD: DELETE cita WHERE id = :id
+    BD-->>Servidor: Eliminación exitosa
+    Servidor-->>Web: Cita cancelada
+    Web-->>Usuario: Mostrar confirmación
+
+    %% Reprogramación de cita (con nuevo flujo)
+    Usuario->>Web: Selecciona "Reprogramar cita"
+    Web->>Servidor: GET /citas-disponibles
+    Servidor->>BD: SELECT * FROM citas WHERE disponible = true
+    BD-->>Servidor: Lista de citas disponibles
+    Servidor-->>Web: Lista de horarios disponibles
+    Web-->>Usuario: Muestra horarios disponibles
+
+    Usuario->>Web: Selecciona nuevo horario
+    Web->>Servidor: POST /crear-cita 
+    Servidor->>BD: INSERT cita(fecha, tipo, modalidad)
+    
+    Servidor->>BD: DELETE cita WHERE id = cita_anterior
+    BD-->>Servidor: Cita anterior cancelada
+    Servidor-->>Web: Cita reprogramada exitosamente
+    Web-->>Usuario: Mostrar confirmación
