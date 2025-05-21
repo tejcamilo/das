@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 108px;
+}
+
+header.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between groups */
+    padding: 10px 20px;
+    background-color: #1E3954;
+}
+
+header.navbar .left-section {
+    display: flex;
+    align-items: center; /* Align logo and title vertically */
+    gap: 10px; /* Add spacing between logo and title */
+}
+
+header.navbar .profile {
+    margin-left: auto; /* Push profile to the far right */
+}
+header.navbar .menu img {
+    height: 30px; /* Adjust logo size */
+}
+
+header.navbar .logo img {
+    height: 30px; /* Adjust logo size */
+}
+
+header.navbar .title p {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white; /* Optional: Adjust text color */
+}
+
+header.navbar .profile img {
+    height: 30px; /* Adjust profile image size */
+    border-radius: 50%; /* Optional: Make it circular */
+}
+
+div {
+    border: 1px solid black; /* Add a 1px solid black border */
+}
