@@ -1,25 +1,41 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+@import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
+
+/* Apply Sarala font to all elements */
+* {
+    font-family: 'Sarala', sans-serif; /* Use the Sarala font */
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Ensure consistent box model */
+}
+
+body {
+    background-color: #E8EDF2;
+    display: flex; /* Enable Flexbox */
+    flex-direction: column; /* Stack header and container vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Keep header at the top */
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
 }
 
 header {
+    width: 100%; /* Make the header span the full width */
     height: 108px;
 }
 
 header.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Space between groups */
+    display: grid; /* Enable Grid layout */
+    grid-template-columns: auto 1fr auto; /* Define three columns: menu, center-section, profile */
+    align-items: center; /* Vertically align items */
     padding: 10px 20px;
     background-color: #1E3954;
+    gap: 20px; /* Optional: Add spacing between grid items */
 }
 
-header.navbar .left-section {
-    display: flex;
-    align-items: center; /* Align logo and title vertically */
+header.navbar .center-section {
+    display: grid; /* Enable Grid layout */
+    grid-template-columns: auto auto; /* Define two columns: logo and title */
+    align-items: center; /* Vertically align items */
     gap: 10px; /* Add spacing between logo and title */
 }
 
@@ -27,11 +43,14 @@ header.navbar .profile {
     margin-left: auto; /* Push profile to the far right */
 }
 header.navbar .menu img {
-    height: 30px; /* Adjust logo size */
+    align-items: center;
+    height: 52px; 
+    width: 52px;
 }
 
 header.navbar .logo img {
-    height: 30px; /* Adjust logo size */
+    height: 52px; 
+    width: 52px;
 }
 
 header.navbar .title p {
@@ -41,10 +60,53 @@ header.navbar .title p {
 }
 
 header.navbar .profile img {
-    height: 30px; /* Adjust profile image size */
-    border-radius: 50%; /* Optional: Make it circular */
+    height: 52px; 
+    width: 52px;
 }
 
-div {
-    border: 1px solid black; /* Add a 1px solid black border */
+
+
+.citas-icon {
+    width: 148px; /* Adjust icon size */
+    height: 148px; /* Adjust icon size */
+}
+
+.btn-azul { 
+    background-color: #006DFA; /* Blue background */
+    height: 73px;
+    width: 232px; /* Full width */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for the button */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No underline */
+    display: block; /* Inline block for spacing */
+    font-size: 24px; /* Font size */
+    margin: 20px 20px; /* Margin for spacing */
+    cursor: pointer; 
+    border-radius: 8px; 
+}
+
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from parent */
+}
+
+.container {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    height: 700px; /* Container height */
+    width: 641px; /* Container width */
+    border-radius: 37px; /* Rounded corners */
+    background-color: white; /* Optional: Add a background color */
+}
+
+.container h1 {
+    color: #395176;
+    font-size: 44px; /* Font size */
+    margin: 20px; /* Margin for spacing */
+    text-align: center; /* Center text */
 }
