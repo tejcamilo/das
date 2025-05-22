@@ -1,18 +1,36 @@
 class CitasController {
-    getCitas(req, res) {
-        // Logic to retrieve and return all citas
-        res.send("Retrieve all citas");
+    constructor(citasModel) {
+        this.citasModel = citasModel;
     }
 
-    createCita(req, res) {
-        // Logic to create a new cita
-        res.send("Create a new cita");
+    async getCitas(req, res) {
+        try {
+            const citas = await this.citasModel.fetchAll();
+            res.render('citas/index', { citas }); // O res.json(citas) para APIs
+        } catch (error) {
+            res.status(500).send('Error fetching citas');
+        }
     }
 
-    deleteCita(req, res) {
-        // Logic to delete a cita by ID
-        res.send("Delete cita with ID: " + req.params.id);
+    async createCita(req, res) {
+        try {
+            const newCita = req.body;
+            await this.citasModel.save(newCita);
+            res.redirect('/citas'); // O res.status(201).json(newCita) para APIs
+        } catch (error) {
+            res.status(500).send('Error creating cita');
+        }
+    }
+
+    async deleteCita(req, res) {
+        try {
+            const citaId = req.params.id;
+            await this.citasModel.delete(citaId);
+            res.redirect('/citas'); // O res.status(204).send() para APIs
+        } catch (error) {
+            res.status(500).send('Error deleting cita');
+        }
     }
 }
 
-module.exports = CitasController;
+export default CitasController; // Usa module.exports si es CommonJS
