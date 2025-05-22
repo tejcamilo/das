@@ -6,7 +6,7 @@ class CitasController {
     async getCitas(req, res) {
         try {
             const citas = await this.citasModel.fetchAll();
-            res.render('citas/index', { citas }); // O res.json(citas) para APIs
+            res.render('citas/index', { citas }); 
         } catch (error) {
             res.status(500).send('Error fetching citas');
         }
@@ -16,7 +16,7 @@ class CitasController {
         try {
             const newCita = req.body;
             await this.citasModel.save(newCita);
-            res.redirect('/citas'); // O res.status(201).json(newCita) para APIs
+            res.redirect('/citas'); 
         } catch (error) {
             res.status(500).send('Error creating cita');
         }
@@ -26,7 +26,7 @@ class CitasController {
         try {
             const citaId = req.params.id;
             await this.citasModel.delete(citaId);
-            res.redirect('/citas'); // O res.status(204).send() para APIs
+            res.redirect('/citas'); 
         } catch (error) {
             res.status(500).send('Error deleting cita');
         }
