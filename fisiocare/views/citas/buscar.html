@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FisioCare - Citas</title>
+    <link rel="stylesheet" href="/src/assets/css/citas.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="menu" id="menuCerrado">
+            <img src="/src/assets/img/menu.svg" alt="Menu">
+        </div>
+        <div class="center-section">
+            <div class="logo">
+                <img src="/src/assets/img/logo.svg" alt="FisioCare">
+            </div>
+            <div class="title">
+                <p>FisioCare</p>
+            </div>
+        </div>
+        <div class="profile">
+            <img src="/src/assets/img/profile.svg" alt="Perfil">
+        </div>
+      </header>
+    <div class="container">
+        <h1>Buscar Citas</h1>
+        <img src="/src/assets/img/buscar.svg" alt="citas-icon" class="citas-icon">
+        
+        <form action="/citas/buscar" method="GET" class="buscar-form">
+            <input type="date" id="date" name="date" placeholder="Seleccione una fecha">
+
+            <select id="type" name="type">
+                <option value="" disabled selected>Tipo</option>
+                <option value="consulta">Consulta</option>
+                <option value="terapia">Terapia</option>
+                <option value="seguimiento">Seguimiento</option>
+            </select>
+
+            <select id="modalidad" name="modalidad">
+                <option value="" disabled selected>Modalidad</option>
+                <option value="presencial">Presencial</option>
+                <option value="virtual">Virtual</option>
+            </select>
+
+            <button type="submit" class="btn-azul">Buscar</button>
+        </form>
+    </div>
+    
+
+</body>
+</html>

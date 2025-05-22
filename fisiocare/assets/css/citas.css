@@ -110,3 +110,53 @@ a {
     margin: 20px; /* Margin for spacing */
     text-align: center; /* Center text */
 }
+
+.buscar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Add spacing between form elements */
+    margin-top: 20px;
+}
+
+.buscar-form select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: #395176;
+}
+
+.buscar-form select:focus {
+    outline: none;
+    border-color: #006DFA; /* Highlight border on focus */
+}
+
+.buscar-form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #006DFA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buscar-form button:hover {
+    background-color: #0056c1; /* Darker blue on hover */
+}
+
+.buscar-form input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: #395176;
+}
+
+.buscar-form input[type="date"]:focus {
+    outline: none;
+    border-color: #006DFA; /* Highlight border on focus */
+}
