@@ -9,154 +9,76 @@
 }
 
 body {
-    background-color: #E8EDF2;
-    display: flex; /* Enable Flexbox */
-    flex-direction: column; /* Stack header and container vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: flex-start; /* Keep header at the top */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove default margin */
+  font-family: sans-serif;
+  background-color: #f4f7fb;
+  justify-content: center;
 }
 
 header {
-    width: 100%; /* Make the header span the full width */
-    height: 108px;
-}
-
-header.navbar {
-    display: grid; /* Enable Grid layout */
-    grid-template-columns: auto 1fr auto; /* Define three columns: menu, center-section, profile */
-    align-items: center; /* Vertically align items */
-    padding: 10px 20px;
-    background-color: #1E3954;
-    gap: 20px; /* Optional: Add spacing between grid items */
-}
-
-header.navbar .center-section {
-    display: grid; /* Enable Grid layout */
-    grid-template-columns: auto auto; /* Define two columns: logo and title */
-    align-items: center; /* Vertically align items */
-    gap: 10px; /* Add spacing between logo and title */
-}
-
-header.navbar .profile {
-    margin-left: auto; /* Push profile to the far right */
-}
-header.navbar .menu img {
-    align-items: center;
-    height: 52px; 
-    width: 52px;
-}
-
-header.navbar .logo img {
-    height: 52px; 
-    width: 52px;
-}
-
-header.navbar .title p {
-    margin: 0;
-    font-size: 1.5rem;
-    color: white; /* Optional: Adjust text color */
-}
-
-header.navbar .profile img {
-    height: 52px; 
-    width: 52px;
-}
-
-
-
-.citas-icon {
-    width: 148px; /* Adjust icon size */
-    height: 148px; /* Adjust icon size */
-}
-
-.btn-azul { 
-    background-color: #006DFA; /* Blue background */
-    height: 73px;
-    width: 232px; /* Full width */
-    color: white; /* White text */
-    border: none; /* No border */
-    padding: 10px 20px; /* Padding for the button */
-    text-align: center; /* Center text */
-    text-decoration: none; /* No underline */
-    display: block; /* Inline block for spacing */
-    font-size: 24px; /* Font size */
-    margin: 20px 20px; /* Margin for spacing */
-    cursor: pointer; 
-    border-radius: 8px; 
-}
-
-a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit text color from parent */
+  width: 1000px; /* Make the header span the full width */
+  height: 108px;
 }
 
 .container {
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-    height: 700px; /* Container height */
-    width: 641px; /* Container width */
-    border-radius: 37px; /* Rounded corners */
-    background-color: white; /* Optional: Add a background color */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 100px auto;
+
+  width: 800px;
+  max-height: 700px;
+
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  
 }
 
-.container h1 {
-    color: #395176;
-    font-size: 44px; /* Font size */
-    margin: 20px; /* Margin for spacing */
-    text-align: center; /* Center text */
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  padding: 20px 30px;
+  background-color: #fff;
+  margin-bottom: 20px;
 }
 
-.buscar-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Add spacing between form elements */
-    margin-top: 20px;
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #1e293b;
 }
 
-.buscar-form select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: white;
-    color: #395176;
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
 }
 
-.buscar-form select:focus {
-    outline: none;
-    border-color: #006DFA; /* Highlight border on focus */
+.spacer {
+  flex-grow: 1;
 }
 
-.buscar-form button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #006DFA;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.icon {
+  font-size: 20px;
 }
 
-.buscar-form button:hover {
-    background-color: #0056c1; /* Darker blue on hover */
+.schedule-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.buscar-form input[type="date"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: white;
-    color: #395176;
-}
-
-.buscar-form input[type="date"]:focus {
-    outline: none;
-    border-color: #006DFA; /* Highlight border on focus */
+.schedule-btn:hover {
+  background-color: #005fcc;
 }

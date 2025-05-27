@@ -1,18 +1,20 @@
-class CitasController {
-    getCitas(req, res) {
-        // Logic to retrieve and return all citas
-        res.send("Retrieve all citas");
-    }
+import { CitasModel } from '../models/citasModel.js';
 
-    createCita(req, res) {
-        // Logic to create a new cita
-        res.send("Create a new cita");
-    }
 
-    deleteCita(req, res) {
-        // Logic to delete a cita by ID
-        res.send("Delete cita with ID: " + req.params.id);
+export const index = async (req, res) => {
+    try {
+        res.render('citas/index');
+    } catch (error) {
+        console.log(error);
     }
 }
 
-module.exports = CitasController;
+export const getCitas = async (req, res) => {
+    try {
+        const data = await CitasModel.find();
+        res.render('citas/citas', { citas: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
+

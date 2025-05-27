@@ -1,27 +1,14 @@
-class CitasModel {
-    constructor() {
-        this.citas = []; // Array to hold citas data
-    }
+import { Schema, model } from "mongoose";
 
-    // Method to fetch all citas
-    getAllCitas() {
-        return this.citas;
-    }
+const citasSchema = new Schema({
+    fecha: { type: String, required: true },
+    hora: { type: String, required: true },
+    tipo: { type: String, required: true },
+    modalidad: { type: String, required: true },
+    profesional: { type: String, required: true },
+    disponible: { type: Boolean, default: true,  } 
+});
 
-    // Method to create a new cita
-    createCita(cita) {
-        this.citas.push(cita);
-        return cita;
-    }
+const CitasModel = model('citas', citasSchema);
 
-    // Method to delete a cita by id
-    deleteCita(id) {
-        const index = this.citas.findIndex(cita => cita.id === id);
-        if (index !== -1) {
-            return this.citas.splice(index, 1)[0];
-        }
-        return null;
-    }
-}
-
-module.exports = CitasModel;
+export { CitasModel };

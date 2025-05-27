@@ -1,0 +1,45 @@
+header {
+    width: 100%; /* Make the header span the full width */
+    height: 108px;
+}
+
+header.navbar {
+    display: grid; /* Enable Grid layout */
+    grid-template-columns: auto 1fr auto; /* Define three columns: menu, center-section, profile */
+    align-items: center; /* Vertically align items */
+    padding: 10px 20px;
+    background-color: #1E3954;
+    gap: 20px; /* Optional: Add spacing between grid items */
+}
+
+header.navbar .center-section {
+    display: grid; /* Enable Grid layout */
+    grid-template-columns: auto auto; /* Define two columns: logo and title */
+    align-items: center; /* Vertically align items */
+    gap: 10px; /* Add spacing between logo and title */
+}
+
+header.navbar .profile {
+    margin-left: auto; /* Push profile to the far right */
+}
+header.navbar .menu img {
+    align-items: center;
+    height: 52px; 
+    width: 52px;
+}
+
+header.navbar .logo img {
+    height: 52px; 
+    width: 52px;
+}
+
+header.navbar .title p {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white; /* Optional: Adjust text color */
+}
+
+header.navbar .profile img {
+    height: 52px; 
+    width: 52px;
+}

@@ -1,18 +1,34 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const citasRoutes = require('./routes/citasRoutes');
-const usuariosRoutes = require('./routes/usuariosRoutes');
+import express, { json } from "express";
+import bodyParser from 'body-parser';
+//import citasRoutes from './routes/citasRoutes.js';
+//import setUsuariosRoutes from './routes/usuariosRoutes.js';
+import { connectDB } from "./config/database.js";
+import  * as citasController from "./controllers/citasController.js";
 
-const app = express();
+const server = express();
 const PORT = process.env.PORT || 3000;
 
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+connectDB().then(() => {  }).catch((error) => {
+    console.log(error);
+});
 
-app.use('/citas', citasRoutes);
-app.use('/usuarios', usuariosRoutes);
 
-app.listen(PORT, () => {
+
+server.set('view engine', 'ejs');
+server.use(express.urlencoded({ extended: true }));
+server.use(express.static('assets')); 
+server.use(json());
+
+
+server.get('/citas', citasController.index);
+server.get('/citas/agendar', citasController.getCitas);
+
+//server.use('/citas', citasRoutes);
+//server.use('/usuarios', usuariosRoutes);
+
+server.set('view engine', 'ejs');
+//server.set('views', join(__dirname, 'views'));
+
+server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
