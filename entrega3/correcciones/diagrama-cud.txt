@@ -1,0 +1,34 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+    Paciente([Paciente])
+    Profesional([Profesional])
+
+    Registrarse([Registrarse])
+    IniciarSesionP([Iniciar sesión])
+    AgendarCita([Agendar cita])
+    CancelarCita([Cancelar cita])
+    ReprogramarCita([Reprogramar cita])
+    VerHistorialPaciente([Ver historial de citas])
+    Notificaciones([Recibir notificaciones WhatsApp])
+
+    IniciarSesionPro([Iniciar sesión])
+    VerHistorialProfesional([Ver historial de citas])
+    GestionHistoria([Gestionar historia clínica])
+    Diagnostico([Agregar diagnóstico])
+    Tratamiento([Registrar tratamiento])
+    Notas([Escribir notas clínicas])
+
+    Paciente --> Registrarse
+    Paciente --> IniciarSesionP
+    Paciente --> AgendarCita
+    Paciente --> CancelarCita
+    Paciente --> ReprogramarCita
+    Paciente --> VerHistorialPaciente
+    Paciente --> Notificaciones
+
+    Profesional --> IniciarSesionPro
+    Profesional --> VerHistorialProfesional
+    Profesional --> GestionHistoria
+    GestionHistoria --> Diagnostico
+    GestionHistoria --> Tratamiento
+    GestionHistoria --> Notas

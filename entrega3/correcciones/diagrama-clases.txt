@@ -1,0 +1,40 @@
+---
+config:
+  theme: base
+---
+classDiagram
+    class Usuario {
+        +String id
+        +String nombre
+        +String email
+        +String telefono
+        +void registrar()
+        +void actualizar()
+        +HistoriaClinica verHistoriaClinica()
+    }
+
+    class HistoriaClinica {
+        +String id
+        +String diagnostico
+        +String tratamiento
+        +Date fecha
+        +void agregarDiagnostico()
+        +void agregarTratamiento()
+        +void agregarNota(idCita: String, nota: String)
+        +void actualizarNota(idCita: String, nota: String)
+    }
+
+    class Cita {
+        +String id
+        +Date fecha
+        +String tipo
+        +String modalidad
+        +void agendar()
+        +void cancelar()
+        +void reprogramar()
+    }
+
+    %% Relaciones corregidas
+    Usuario *-- HistoriaClinica : contiene
+    Usuario o-- Cita : agenda
+    HistoriaClinica --> "0..*" Cita : referencia
