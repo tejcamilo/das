@@ -21,7 +21,8 @@ server.use(json());
 
 
 server.get('/citas', citasController.index);
-server.get('/citas/agendar', citasController.getCitas);
+server.get('/citas/agendar', citasController.agendarCitas);
+server.get('/citas/consultar', citasController.consultarCitas);
 
 //server.use('/citas', citasRoutes);
 //server.use('/usuarios', usuariosRoutes);

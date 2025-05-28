@@ -68,7 +68,7 @@ header {
   font-size: 20px;
 }
 
-.schedule-btn {
+.blue-btn {
   background-color: #007bff;
   color: white;
   border: none;
@@ -79,6 +79,21 @@ header {
   transition: background-color 0.2s ease;
 }
 
-.schedule-btn:hover {
+.blue-btn:hover {
   background-color: #005fcc;
+}
+
+.red-btn {
+  background-color: #D43E32;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.red-btn:hover {
+  background-color: #b9342b;
 }

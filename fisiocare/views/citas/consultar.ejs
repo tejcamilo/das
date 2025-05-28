@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendar Citas</title>
+  <link rel="stylesheet" href="/css/citas.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+</head>
+<body>
+    <div>
+        <%- include('../components/header') %>
+        <div class="container">
+            <% citas.forEach(cita => { %>
+                <% if (!cita.disponible) { %>
+                    <div class="card">
+                    <div class="info">
+                        <div class="row">
+                        <span class="icon">📅</span>
+                        <span><%= cita.fecha %> - <%= cita.hora %></span>
+                        </div>
+                        <div class="row">
+                        <span class="icon">🗓️</span>
+                        <span><%= cita.tipo %></span>
+                        <span class="spacer"></span>
+                        <span class="icon">🧍</span>
+                        <span><%= cita.modalidad %></span>
+                        </div>
+                        <div class="row">
+                        <span class="icon">🩺</span>
+                        <span><%= cita.profesional %></span>
+                        </div>
+                    </div>
+                        <button class="blue-btn">Reprogramar</button>
+                        <button class="red-btn">Cancelar</button>
+                    </div>
+                <% } %>
+            <% }) %>
+
+        </div>
+    </div>
+</body>
+</html>
