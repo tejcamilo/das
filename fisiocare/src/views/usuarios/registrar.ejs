@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Usuario</title>
+  <link rel="stylesheet" href="/css/usuarios.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div>
+        <%- include('../components/header') %>
+        <div class="container">
+            <h2>Registro de Paciente</h2>
+            
+            <% if (error) { %>
+                <div class="error-message" style="color: #D43E32; margin-bottom: 20px;">
+                    <%= error %>
+                </div>
+            <% } %>
+            
+            <form action="/usuarios/registrar" method="POST">
+                <div class="card" style="flex-direction: column; gap: 20px;">
+                    <div class="info">
+                        <div class="row">
+                            <span class="icon">🆔</span>
+                            <input type="text" name="id" placeholder="Número de identificación" required 
+                                   style="padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+                        </div>
+
+                        <div class="row">
+                            <span class="icon">👤</span>
+                            <input type="text" name="nombre" placeholder="Nombre completo" required 
+                                   style="padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+                        </div>
+                        
+                        <div class="row">
+                            <span class="icon">📧</span>
+                            <input type="email" name="correo" placeholder="Correo electrónico" required 
+                                   style="padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+                        </div>
+                        
+                        <div class="row">
+                            <span class="icon">📱</span>
+                            <input type="tel" name="telefono" placeholder="Número de teléfono" required 
+                                   style="padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+                        </div>
+                        
+                        <div class="row">
+                            <span class="icon">🔒</span>
+                            <input type="password" name="password" placeholder="Contraseña" required 
+                                   style="padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+                        </div>
+                        
+                        <div class="row">
+                            <span class="icon">🔒</span>
+                            <input type="password" name="confirmPassword" placeholder="Confirmar contraseña" required 
+                                   style="padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+                        </div>
+
+                        <!-- Campo oculto para tipoUsuario con valor "paciente" -->
+                        <input type="hidden" name="tipoUsuario" value="paciente">
+                    </div>
+                    
+                    <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                        <a href="/" class="red-btn" style="text-decoration: none; text-align: center;">Cancelar</a>
+                        <button class="blue-btn" type="submit">Registrarse</button>
+                    </div>
+                </div>
+            </form>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <p>¿Ya tienes una cuenta? <a href="/usuarios/iniciar-sesion">Inicia sesión aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <% if (req.query.success) { %>
+      <script>
+        Swal.fire({
+          icon: 'success',
+          title: '¡Registro exitoso!',
+          html: 'Bienvenido <b><%= req.query.nombre %></b>, tu cuenta de paciente ha sido creada correctamente.<br>' +
+                'Ahora puedes iniciar sesión con tu correo electrónico.',
+        }).then(() => {
+          window.location.href = '/usuarios/iniciar-sesion';
+        });
+      </script>
+    <% } %>
+
+    <% if (req.query.error) { %>
+      <script>
+        Swal.fire({
+          icon: 'error',
+          title: 'Error en el registro',
+          text: '<%= req.query.error %>',
+        });
+      </script>
+    <% } %>
+</body>
+</html>
