@@ -42,6 +42,7 @@ header {
   padding: 20px 30px;
   background-color: #fff;
   margin-bottom: 20px;
+  
 }
 
 .info {
@@ -75,6 +76,11 @@ header {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+}
+
+.blue-btn a {
+  color: white; /* Ensure link text is white */
+  text-decoration: none; /* Remove underline from link */
 }
 
 .blue-btn:hover {

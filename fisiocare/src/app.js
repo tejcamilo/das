@@ -28,6 +28,7 @@ server.get('/citas', citasController.index);
 server.get('/citas/agendar', citasController.agendarCitas);
 server.get('/citas/consultar', citasController.consultarCitas);
 server.post('/citas/agendar', citasController.updateCita);
+server.post('/citas/reagendar', citasController.reagendarCita);
 server.post('/citas/consultar', citasController.cancelarCita);
 server.post('/citas/reprogramar', citasController.reagendarCita);
 

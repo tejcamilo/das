@@ -6,6 +6,7 @@
   <title>Agendar Citas</title>
   <link rel="stylesheet" href="/css/citas.css" />
   <link rel="stylesheet" href="/css/header.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div>
@@ -41,5 +42,20 @@
 
         </div>
     </div>
+    <% if (req.query.success) { %>
+      <script>
+        Swal.fire({
+          icon: 'success',
+          title: '¡Cita agendada!',
+          html: '<b>Fecha:</b> <%= req.query.fecha %> <br>' +
+                '<b>Hora:</b> <%= req.query.hora %> <br>' +
+                '<b>Tipo:</b> <%= req.query.tipo %> <br>' +
+                '<b>Modalidad:</b> <%= req.query.modalidad %> <br>' +
+                '<b>Profesional:</b> <%= req.query.profesional %>',
+        }).then(() => {
+          window.location.href = '/citas/consultar';
+        });
+      </script>
+    <% } %>
 </body>
 </html>

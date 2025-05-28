@@ -6,45 +6,100 @@
   <title>Agendar Citas</title>
   <link rel="stylesheet" href="/css/citas.css" />
   <link rel="stylesheet" href="/css/header.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div>
         <%- include('../components/header') %>
         <div class="container">
-            <% citas.forEach(cita => { %>
-                <% if (!cita.disponible) { %>
-                    <div class="card">
-                    <div class="info">
-                        <div class="row">
-                        <span class="icon">📅</span>
-                        <span><%= cita.fecha %> - <%= cita.hora %></span>
-                        </div>
-                        <div class="row">
-                        <span class="icon">🗓️</span>
-                        <span><%= cita.tipo %></span>
-                        <span class="spacer"></span>
-                        <span class="icon">🧍</span>
-                        <span><%= cita.modalidad %></span>
-                        </div>
-                        <div class="row">
-                        <span class="icon">🩺</span>
-                        <span><%= cita.profesional %></span>
-                        </div>
+            <% 
+              const citasNoDisponibles = citas.filter(cita => !cita.disponible);
+              if (citasNoDisponibles.length === 0) { 
+            %>
+              <div class="no-citas" style="text-align:center; color:#395176; margin-top:40px; font-size:1.2rem;">
+                Aún no tiene citas programadas.
+                <div>
+                    <img src="/img/no-citas.svg" alt="citas-icon" class="citas-icon" style="width:150px; height:150px; margin-top:20px;">
+                </div>
+                
+                <div>
+                    <button class="blue-btn" style="margin-top:20px;">
+                    <a href="/citas/agendar">Agendar Citas</a>
+                </div>
+            
+              </div>
+            <% } else { %>
+              <% citasNoDisponibles.forEach(cita => { %>
+                <div class="card">
+                  <div class="info">
+                    <div class="row">
+                      <span class="icon">📅</span>
+                      <span><%= cita.fecha %> - <%= cita.hora %></span>
                     </div>
-                        <form action="/citas/agendar" method="POST" style="margin:0;">
-                            <input type="hidden" name="citaId" value="<%= cita._id %>">
-                            <button class="blue-btn" type="submit">Reprogramar</button>
-                        </form>
-                        <form action="/citas/consultar" method="POST" style="margin:0;">
-                            <input type="hidden" name="citaId" value="<%= cita._id %>">
-                            <button class="red-btn" type="submit">Cancelar</button>
-                        </form>
-                        
+                    <div class="row">
+                      <span class="icon">🗓️</span>
+                      <span><%= cita.tipo %></span>
+                      <span class="spacer"></span>
+                      <span class="icon">🧍</span>
+                      <span><%= cita.modalidad %></span>
                     </div>
-                <% } %>
-            <% }) %>
-
+                    <div class="row">
+                      <span class="icon">🩺</span>
+                      <span><%= cita.profesional %></span>
+                    </div>
+                  </div>
+                  <form action="/citas/reagendar" method="POST" class="update-form" style="margin:0;">
+                    <input type="hidden" name="citaId" value="<%= cita._id %>">
+                    <button class="blue-btn" type="submit">Reprogramar</button>
+                  </form>
+                  <form action="/citas/consultar" method="POST" class="cancel-form" style="margin:0;">
+                    <input type="hidden" name="citaId" value="<%= cita._id %>">
+                    <button class="red-btn cancel-btn" type="button">Cancelar</button>
+                  </form>
+                </div>
+              <% }) %>
+            <% } %>
         </div>
     </div>
+    <script>
+document.querySelectorAll('.cancel-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const form = btn.closest('form');
+    Swal.fire({
+      title: '¿Cancelar cita?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Cancelar',
+      cancelButtonText: 'Volver'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        form.submit();
+      }
+    });
+  });
+});
+
+document.querySelectorAll('.update-form .blue-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const form = btn.closest('form');
+    Swal.fire({
+      title: '¿Reprogramar cita?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#006DFA',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Reprogramar',
+      cancelButtonText: 'Volver'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        form.submit();
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>

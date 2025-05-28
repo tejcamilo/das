@@ -12,7 +12,7 @@ export const index = async (req, res) => {
 export const agendarCitas = async (req, res) => {
     try {
         const data = await CitasModel.find();
-        res.render('citas/agendar', { citas: data });
+        res.render('citas/agendar', { citas: data, req });
     } catch (error) {
         console.log(error);
     }
@@ -32,7 +32,17 @@ export const updateCita =  async (req, res) => {
     try {
         await CitasModel.findByIdAndUpdate(citaId, { disponible: false });
         console.log('Cita agendada:', citaId);
-        res.redirect('/citas/agendar');
+        const cita = await CitasModel.findById(citaId);
+        const params = new URLSearchParams({
+          success: 1,
+          fecha: cita.fecha,
+          hora: cita.hora,
+          tipo: cita.tipo,
+          modalidad: cita.modalidad,
+          profesional: cita.profesional
+        }).toString();
+
+        res.redirect(`/citas/agendar?${params}`);
     } catch (error) {
         console.log(error);
         res.status(500).send('Error al agendar la cita');
