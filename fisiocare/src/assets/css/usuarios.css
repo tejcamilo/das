@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
+
+/* Apply Sarala font to all elements */
+* {
+    font-family: 'Sarala', sans-serif; /* Use the Sarala font */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure consistent box model */
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #f4f7fb;
+    justify-content: center;
+}
+
+header {
+    width: 1000px; /* Make the header span the full width */
+    height: 108px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 80px auto 0 auto;   /* Reduced top margin for better spacing */
+    width: 800px;
+    height: 100%;          /* Set a max height for scrolling */
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;           /* Enable vertical scrolling */
+    position: relative;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 20px 30px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #1e293b;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.blue-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.blue-btn a {
+    color: white; /* Ensure link text is white */
+    text-decoration: none; /* Remove underline from link */
+}
+
+.blue-btn:hover {
+    background-color: #005fcc;
+}
+
+.red-btn {
+    background-color: #D43E32;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.red-btn:hover {
+    background-color: #b9342b;
+}
