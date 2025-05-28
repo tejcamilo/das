@@ -24,6 +24,8 @@ server.get('/citas', citasController.index);
 server.get('/citas/agendar', citasController.agendarCitas);
 server.get('/citas/consultar', citasController.consultarCitas);
 server.post('/citas/agendar', citasController.updateCita);
+server.post('/citas/consultar', citasController.cancelarCita);
+server.post('/citas/reprogramar', citasController.reagendarCita);
 
 //server.use('/citas', citasRoutes);
 //server.use('/usuarios', usuariosRoutes);

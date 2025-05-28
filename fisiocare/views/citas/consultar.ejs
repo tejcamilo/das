@@ -31,8 +31,15 @@
                         <span><%= cita.profesional %></span>
                         </div>
                     </div>
-                        <button class="blue-btn">Reprogramar</button>
-                        <button class="red-btn">Cancelar</button>
+                        <form action="/citas/agendar" method="POST" style="margin:0;">
+                            <input type="hidden" name="citaId" value="<%= cita._id %>">
+                            <button class="blue-btn" type="submit">Reprogramar</button>
+                        </form>
+                        <form action="/citas/consultar" method="POST" style="margin:0;">
+                            <input type="hidden" name="citaId" value="<%= cita._id %>">
+                            <button class="red-btn" type="submit">Cancelar</button>
+                        </form>
+                        
                     </div>
                 <% } %>
             <% }) %>
