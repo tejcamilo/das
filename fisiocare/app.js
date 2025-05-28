@@ -23,6 +23,7 @@ server.use(json());
 server.get('/citas', citasController.index);
 server.get('/citas/agendar', citasController.agendarCitas);
 server.get('/citas/consultar', citasController.consultarCitas);
+server.post('/citas/agendar', citasController.updateCita);
 
 //server.use('/citas', citasRoutes);
 //server.use('/usuarios', usuariosRoutes);

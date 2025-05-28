@@ -27,3 +27,13 @@ export const consultarCitas = async (req, res) => {
     }
 }
 
+export const updateCita =  async (req, res) => {
+    const { citaId } = req.body;
+    try {
+        await CitasModel.findByIdAndUpdate(citaId, { disponible: false });
+        res.redirect('/citas/agendar');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error al agendar la cita');
+    }
+}

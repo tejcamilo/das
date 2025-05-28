@@ -33,10 +33,11 @@ header.navbar .logo img {
     width: 52px;
 }
 
-header.navbar .title p {
+header.navbar .title a {
     margin: 0;
     font-size: 1.5rem;
     color: white; /* Optional: Adjust text color */
+    text-decoration: none;
 }
 
 header.navbar .profile img {

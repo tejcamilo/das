@@ -31,7 +31,10 @@
                         <span><%= cita.profesional %></span>
                         </div>
                     </div>
-                    <button class="blue-btn">Agendar</button>
+                    <form action="/citas/agendar" method="POST" style="margin:0;">
+                      <input type="hidden" name="citaId" value="<%= cita._id %>">
+                      <button class="blue-btn" type="submit">Agendar</button>
+                    </form>
                     </div>
                 <% } %>
             <% }) %>
