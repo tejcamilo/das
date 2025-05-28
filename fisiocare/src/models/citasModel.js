@@ -1,26 +1,38 @@
 class CitasModel {
     constructor() {
-        this.citas = []; // Array to hold citas data
+        this.citas = []; 
+        this.currentId = 1; 
     }
 
-    // Method to fetch all citas
     getAllCitas() {
         return this.citas;
     }
 
-    // Method to create a new cita
+    getCitaById(id) {
+        return this.citas.find(cita => cita.id === id);
+    }
+
     createCita(cita) {
+        if (!cita.id) {
+            cita.id = this.currentId++;
+        }
         this.citas.push(cita);
         return cita;
     }
 
-    // Method to delete a cita by id
-    deleteCita(id) {
-        const index = this.citas.findIndex(cita => cita.id === id);
-        if (index !== -1) {
-            return this.citas.splice(index, 1)[0];
+    updateCita(id, updatedData) {
+        const cita = this.getCitaById(id);
+        if (cita) {
+            Object.assign(cita, updatedData);
+            return cita;
         }
         return null;
+    }
+
+    deleteCita(id) {
+        const initialLength = this.citas.length;
+        this.citas = this.citas.filter(cita => cita.id !== id);
+        return initialLength !== this.citas.length;
     }
 }
 
