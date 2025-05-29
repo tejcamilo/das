@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 //import setUsuariosRoutes from './routes/usuariosRoutes.js';
 import { connectDB } from "./config/database.js";
 import  * as citasController from "./controllers/citasController.js";
+import * as usuariosController from "./controllers/usuariosController.js";
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
