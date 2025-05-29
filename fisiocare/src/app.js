@@ -33,6 +33,16 @@ server.post('/citas/reagendar', citasController.reagendarCita);
 server.post('/citas/consultar', citasController.cancelarCita);
 server.post('/citas/reprogramar', citasController.reagendarCita);
 
+erver.get('/usuarios', usuariosController.index);
+server.get('/usuarios/registrar', usuariosController.registrarUsuario);
+server.get('/usuarios/consultar', usuariosController.consultarUsuarios);
+server.post('/usuarios/registrar', usuariosController.crearUsuario);
+server.post('/usuarios/iniciar-sesion', usuariosController.iniciarSesion);
+server.post('/usuarios/cerrar-sesion', usuariosController.cerrarSesion);
+server.post('/usuarios/modificar/:usuarioId', usuariosController.modificarUsuario);
+server.post('/usuarios/eliminar/:usuarioId', usuariosController.eliminarUsuario);
+
+
 //server.use('/citas', citasRoutes);
 //server.use('/usuarios', usuariosRoutes);
 
