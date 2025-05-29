@@ -1,0 +1,37 @@
+---
+config:
+  theme: base
+---
+sequenceDiagram
+    participant Usuario
+    participant Web
+    participant Servidor
+    participant BD as Base de Datos
+
+    Usuario->>Web: Ingresa datos de cita
+    Web->>Servidor: POST /crear-cita
+    Servidor->>BD: INSERT cita(fecha, tipo, modalidad, estado="agendada")
+    BD-->>Servidor: Confirmación
+    Servidor-->>Web: Cita agendada
+    Web-->>Usuario: Mostrar confirmación
+
+    Usuario->>Web: Selecciona "Cancelar cita"
+    Web->>Servidor: PUT /cancelar-cita/:id
+    Servidor->>BD: UPDATE cita SET estado = "libre" WHERE id = :id
+    BD-->>Servidor: Actualización exitosa
+    Servidor-->>Web: Cita cancelada
+    Web-->>Usuario: Mostrar confirmación
+
+    Usuario->>Web: Selecciona "Reprogramar cita"
+    Web->>Servidor: GET /citas-disponibles
+    Servidor->>BD: SELECT * FROM citas WHERE estado = "libre"
+    BD-->>Servidor: Lista de citas disponibles
+    Servidor-->>Web: Lista de horarios disponibles
+    Web-->>Usuario: Muestra horarios disponibles
+
+    Usuario->>Web: Selecciona nuevo horario
+    Web->>Servidor: PUT /modificar-cita/:id
+    Servidor->>BD: UPDATE cita SET fecha=nueva_fecha, estado="agendada" WHERE id = :id
+    BD-->>Servidor: Cita reprogramada
+    Servidor-->>Web: Cita reprogramada exitosamente
+    Web-->>Usuario: Mostrar confirmación
