@@ -5,39 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FisioCare - Citas</title>
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
-    <header class="navbar">
-        <div class="menu" id="menuCerrado">
-            <img src="/img/menu.svg" alt="Menu">
+    <div>
+        <%- include('../components/header') %>
+        <div class="container">
+            <h1>Citas Médicas</h1>
+            <img src="../img/calendar.svg" alt="citas-icon" class="citas-icon">
+            <button class="btn-azul">
+                <a href="/citas/agendar">Agendar Cita</a>
+            </button>
+            <button class="btn-azul">
+                <a href="/citas/consultar">Consultar Cita</a>
+            </button>
+            <button class="btn-azul">
+                <a href="/citas/admin">Admin</a>
+            </button>
         </div>
-        <div class="center-section">
-            <div class="logo">
-                <img src="/img/logo.svg" alt="FisioCare">
-            </div>
-            <div class="title">
-                <p>FisioCare</p>
-            </div>
-        </div>
-        <div class="profile">
-            <img src="/img/profile.svg" alt="Perfil">
-        </div>
-      </header>
-    <div class="container">
-        <h1>Citas Médicas</h1>
-        <img src="../img/calendar.svg" alt="citas-icon" class="citas-icon">
-        <button class="btn-azul">
-            <a href="/citas/agendar">Agendar Cita</a>
-        </button>
-        <button class="btn-azul">
-            <a href="/citas/consultar">Consultar Cita</a>
-        </button>
-        <button class="btn-azul">
-            <a href="/citas/admin">Admin</a>
-        </button>
+        
     </div>
-    
-   
     
 </body>
 </html>

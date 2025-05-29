@@ -1,10 +1,12 @@
 import express, { json } from "express";
 import bodyParser from 'body-parser';
+import session from 'express-session';
 //import citasRoutes from './routes/citasRoutes.js';
 //import setUsuariosRoutes from './routes/usuariosRoutes.js';
 import { connectDB } from "./config/database.js";
 import  * as citasController from "./controllers/citasController.js";
-import * as usuariosController from "./controllers/usuariosController.js";
+import * as loginController from "./controllers/loginController.js";
+
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -25,7 +27,28 @@ server.use(express.static('src/assets'));
 server.use(json());
 server.set('views', join(__dirname, 'views'));
 
-server.get('/citas', citasController.index);
+server.use(session({
+  secret: 'somethingsecret',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// login
+server.get('/login', loginController.login);
+server.post('/login', loginController.loginPost);
+// Logout
+server.get('/logout', loginController.logout);
+
+// Middleware para proteger rutas
+function requireLogin(req, res, next) {
+  if (!req.session.usuario) {
+    return res.redirect('/login');
+  }
+  next();
+}
+
+// Proteger rutas 
+server.get('/citas', requireLogin, citasController.index);
 server.get('/citas/agendar', citasController.agendarCitas);
 server.get('/citas/consultar', citasController.consultarCitas);
 server.post('/citas/agendar', citasController.updateCita);
