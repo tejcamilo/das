@@ -33,7 +33,7 @@ server.post('/citas/reagendar', citasController.reagendarCita);
 server.post('/citas/consultar', citasController.cancelarCita);
 server.post('/citas/reprogramar', citasController.reagendarCita);
 
-erver.get('/usuarios', usuariosController.index);
+server.get('/usuarios', usuariosController.index);
 server.get('/usuarios/registrar', usuariosController.registrarUsuario);
 server.get('/usuarios/consultar', usuariosController.consultarUsuarios);
 server.post('/usuarios/registrar', usuariosController.crearUsuario);
