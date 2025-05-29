@@ -1,36 +1,74 @@
-class CitasController {
-    constructor(citasModel) {
-        this.citasModel = citasModel;
-    }
+import { CitasModel } from '../models/citasModel.js';
 
-    async getCitas(req, res) {
-        try {
-            const citas = await this.citasModel.fetchAll();
-            res.render('citas/index', { citas }); 
-        } catch (error) {
-            res.status(500).send('Error fetching citas');
-        }
-    }
 
-    async createCita(req, res) {
-        try {
-            const newCita = req.body;
-            await this.citasModel.save(newCita);
-            res.redirect('/citas'); 
-        } catch (error) {
-            res.status(500).send('Error creating cita');
-        }
-    }
-
-    async deleteCita(req, res) {
-        try {
-            const citaId = req.params.id;
-            await this.citasModel.delete(citaId);
-            res.redirect('/citas'); 
-        } catch (error) {
-            res.status(500).send('Error deleting cita');
-        }
+export const index = async (req, res) => {
+    try {
+        res.render('citas/index', { title: 'Citas' });
+    } catch (error) {
+        console.log(error);
     }
 }
 
-export default CitasController; // Usa module.exports si es CommonJS
+export const agendarCitas = async (req, res) => {
+    try {
+        const data = await CitasModel.find();
+        res.render('citas/agendar', { citas: data, req });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const consultarCitas = async (req, res) => {
+    try {
+        const data = await CitasModel.find();
+        res.render('citas/consultar', { citas: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updateCita =  async (req, res) => {
+    const { citaId } = req.body;
+    try {
+        await CitasModel.findByIdAndUpdate(citaId, { disponible: false });
+        console.log('Cita agendada:', citaId);
+        const cita = await CitasModel.findById(citaId);
+        const params = new URLSearchParams({
+          success: 1,
+          fecha: cita.fecha,
+          hora: cita.hora,
+          tipo: cita.tipo,
+          modalidad: cita.modalidad,
+          profesional: cita.profesional
+        }).toString();
+
+        res.redirect(`/citas/agendar?${params}`);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error al agendar la cita');
+    }
+}
+
+export const cancelarCita = async (req, res) => {
+    const { citaId } = req.body;
+    try {
+        await CitasModel.findByIdAndUpdate(citaId, { disponible: true });
+        console.log('Cita cancelada:', citaId);
+        res.redirect('/citas/consultar');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error al agendar la cita');
+    }
+}
+
+export const reagendarCita = async (req, res) => {
+    const { citaId } = req.body;
+    try {
+        await CitasModel.findByIdAndUpdate(citaId, { disponible: true });
+        console.log('Cita cancelada (reagendar):', citaId);
+        res.redirect('/citas/agendar');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error al agendar la cita');
+    }
+}

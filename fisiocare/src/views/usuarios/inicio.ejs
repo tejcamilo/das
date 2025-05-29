@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="/css/usuarios.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div>
+    <%- include('../components/header') %>
+    
+    <div class="container">
+      <h2>Iniciar Sesión</h2>
+      
+      <% if (error) { %>
+        <div class="error-message" style="color: #D43E32; margin-bottom: 20px;">
+          <%= error %>
+        </div>
+      <% } %>
+      
+      <form action="/usuarios/login" method="POST">
+        <div class="card">
+          <div class="info">
+            <div class="row">
+              <span class="icon">👤</span>
+              <input type="email" name="email" placeholder="Correo electrónico" required style="padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+            </div>
+            
+            <div class="row">
+              <span class="icon">🔒</span>
+              <input type="password" name="password" placeholder="Contraseña" required style="padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+            </div>
+          </div>
+          
+          <button class="blue-btn" type="submit">Ingresar</button>
+        </div>
+      </form>
+      
+      <div style="text-align: center; margin-top: 20px;">
+        <p>¿No tienes una cuenta? <a href="/usuarios/registro">Regístrate aquí</a></p>
+      </div>
+    </div>
+  </div>
+
+  <% if (req.query.success) { %>
+    <script>
+      Swal.fire({
+        icon: 'success',
+        title: '¡Sesión iniciada correctamente!',
+        text: 'Bienvenido de vuelta',
+      }).then(() => {
+        window.location.href = '/';
+      });
+    </script>
+  <% } %>
+
+  <% if (req.query.error) { %>
+    <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al iniciar sesión',
+        text: '<%= req.query.error %>',
+      });
+    </script>
+  <% } %>
+</body>
+</html>

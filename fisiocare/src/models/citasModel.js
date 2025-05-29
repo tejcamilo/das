@@ -1,39 +1,14 @@
-class CitasModel {
-    constructor() {
-        this.citas = []; 
-        this.currentId = 1; 
-    }
+import { Schema, model } from "mongoose";
 
-    getAllCitas() {
-        return this.citas;
-    }
+const citasSchema = new Schema({
+  fecha: { type: String, required: true },
+  hora: { type: String, required: true },
+  tipo: { type: String, required: true },
+  modalidad: { type: String, required: true },
+  profesional: { type: String, required: true },
+  disponible: { type: Boolean, default: true,  } 
+});
 
-    getCitaById(id) {
-        return this.citas.find(cita => cita.id === id);
-    }
+const CitasModel = model('citas', citasSchema);
 
-    createCita(cita) {
-        if (!cita.id) {
-            cita.id = this.currentId++;
-        }
-        this.citas.push(cita);
-        return cita;
-    }
-
-    updateCita(id, updatedData) {
-        const cita = this.getCitaById(id);
-        if (cita) {
-            Object.assign(cita, updatedData);
-            return cita;
-        }
-        return null;
-    }
-
-    deleteCita(id) {
-        const initialLength = this.citas.length;
-        this.citas = this.citas.filter(cita => cita.id !== id);
-        return initialLength !== this.citas.length;
-    }
-}
-
-module.exports = CitasModel;
+export { CitasModel };

@@ -1,23 +1,14 @@
-class UsuariosModel {
-    constructor() {
-        this.usuarios = [];
-    }
+import { Schema, model } from "mongoose";
 
-    getAllUsuarios() {
-        return this.usuarios;
-    }
+const usuariosSchema = new Schema({
+    nombre: { type: String, required: true },
+    apellido: { type: String, required: true },
+    correo: { type: String, required: true },
+    tipoUsuario: { type: String, required: true },
+    telefono: { type: String, required: true },
+    password: { type: String, required: true }
+});
 
-    getUsuarioById(id) {
-        return this.usuarios.find(usuario => usuario.id === id);
-    }
+const UsuariosModel = model('usuarios', usuariosSchema);
 
-    createUsuario(usuario) {
-        this.usuarios.push(usuario);
-    }
-
-    deleteUsuario(id) {
-        this.usuarios = this.usuarios.filter(usuario => usuario.id !== id);
-    }
-}
-
-module.exports = UsuariosModel;
+export { UsuariosModel };

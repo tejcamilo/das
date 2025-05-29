@@ -3,30 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citas</title>
+    <title>FisioCare - Citas</title>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <h1>Citas</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Descripción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% citas.forEach(cita => { %>
-                <tr>
-                    <td><%= cita.id %></td>
-                    <td><%= cita.fecha %></td>
-                    <td><%= cita.hora %></td>
-                    <td><%= cita.descripcion %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-    <a href="/citas/create">Crear Cita</a>
+    <header class="navbar">
+        <div class="menu" id="menuCerrado">
+            <img src="/img/menu.svg" alt="Menu">
+        </div>
+        <div class="center-section">
+            <div class="logo">
+                <img src="/img/logo.svg" alt="FisioCare">
+            </div>
+            <div class="title">
+                <p>FisioCare</p>
+            </div>
+        </div>
+        <div class="profile">
+            <img src="/img/profile.svg" alt="Perfil">
+        </div>
+      </header>
+    <div class="container">
+        <h1>Citas Médicas</h1>
+        <img src="../img/calendar.svg" alt="citas-icon" class="citas-icon">
+        <button class="btn-azul">
+            <a href="/citas/agendar">Agendar Cita</a>
+        </button>
+        <button class="btn-azul">
+            <a href="/citas/consultar">Consultar Cita</a>
+        </button>
+    </div>
+    
+   
+    
 </body>
 </html>
