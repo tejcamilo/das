@@ -39,6 +39,11 @@ server.post('/citas/reprogramar', citasController.reagendarCita);
 server.set('view engine', 'ejs');
 //server.set('views', join(__dirname, 'views'));
 
-server.listen(PORT, () => {
+// Only start the server if this file is run directly
+if (process.env.NODE_ENV !== 'test') {
+  server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
-});
+  });
+}
+
+export default server;
