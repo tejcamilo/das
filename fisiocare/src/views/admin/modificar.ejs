@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modificar Cita</title>
+  <link rel="stylesheet" href="/css/citas.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+</head>
+<body>
+  <div>
+    <%- include('../components/header') %>
+    <div class="container">
+      <h2>Modificar Cita</h2>
+      <form action="/citas/admin/modificar/<%= cita._id %>" method="POST" class="form-cita">
+        <div>
+          <label>Fecha:</label>
+          <input type="date" name="fecha" value="<%= cita.fecha %>" required>
+        </div>
+        <div>
+          <label>Hora:</label>
+          <input type="time" name="hora" value="<%= cita.hora %>" required>
+        </div>
+        <div>
+                <label>Tipo:</label>
+                <select name="tipo" required>
+                <option value="Consulta">Consulta</option>
+                <option value="Terapia">Terapia</option>
+                <option value="Valoración">Valoración</option>
+                </select>
+            </div>
+            <div>
+                <label>Modalidad:</label>
+                <select name="modalidad" required>
+                <option value="Presencial">Presencial</option>
+                <option value="Virtual">Virtual</option>
+                </select>
+            </div>
+            <div>
+                <label>Profesional</label>
+                <select name="profesional" required>
+                <option value="Cathalina Cañon">Cathalina Cañon</option>
+                </select>
+            </div>
+        <button class="blue-btn" type="submit">Guardar Cambios</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

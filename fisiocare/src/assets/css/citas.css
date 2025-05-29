@@ -101,3 +101,55 @@ header {
 .red-btn:hover {
   background-color: #b9342b;
 }
+
+/* Crear Cita Form Styles */
+.crear-cita-container {
+  max-width: 420px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(30,57,84,0.10);
+  padding: 32px 28px 24px 28px;
+}
+
+.crear-cita-container h2 {
+  text-align: center;
+  margin-bottom: 28px;
+  color: #395176;
+}
+
+.form-cita label {
+  display: block;
+  margin-bottom: 6px;
+  color: #395176;
+  font-weight: 500;
+}
+
+.form-cita input,
+.form-cita select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 18px;
+  border: 1px solid #bfc9d1;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f7fafd;
+  color: #395176;
+}
+
+.form-cita button.blue-btn {
+  width: 100%;
+  padding: 12px;
+  background: #395176;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-cita button.blue-btn:hover {
+  background: #2c3e5c;
+}

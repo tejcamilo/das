@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Crear Cita</title>
+    <link rel="stylesheet" href="/css/citas.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+</head>
+<body>
+    <div>
+        <%- include('../components/header') %>
+        <div class="crear-cita-container">
+            <h2>Crear Nueva Cita</h2>
+            <form action="/citas/admin/crear" method="POST" class="form-cita">
+            <div>
+                <label>Fecha:</label>
+                <input type="date" name="fecha" required>
+            </div>
+            <div>
+                <label>Hora:</label>
+                <input type="time" name="hora" required>
+            </div>
+            <div>
+                <label>Tipo:</label>
+                <select name="tipo" required>
+                <option value="Consulta">Consulta</option>
+                <option value="Terapia">Terapia</option>
+                <option value="Valoración">Valoración</option>
+                </select>
+            </div>
+            <div>
+                <label>Modalidad:</label>
+                <select name="modalidad" required>
+                <option value="Presencial">Presencial</option>
+                <option value="Virtual">Virtual</option>
+                </select>
+            </div>
+            <div>
+                <label>Profesional</label>
+                <select name="profesional" required>
+                <option value="Cathalina Cañon">Cathalina Cañon</option>
+                </select>
+            </div>
+            <div>
+                <input type="hidden" name="disponible" value="true">
+            </div>
+            <button class="blue-btn" type="submit">Crear Cita</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
